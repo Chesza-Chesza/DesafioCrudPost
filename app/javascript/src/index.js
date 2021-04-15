@@ -4,5 +4,19 @@ export default function index() {
             headers: { 'Accept': 'application/json' }
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(posts => renderPosts(posts))
+        .then(posts => document.querySelector('#posts tbody').innerHTML = posts.join(''))
+}
+
+function renderPosts(posts) {
+    return posts.map(post => createHTML(post))
+}
+
+function createHTML(post) {
+    return `<tr>
+    <td>${post.title}</td>
+    <td><a class="post_show" href="/posts/${post.id}">Show</a></td>
+    <td><a class="post_edit" href="/posts/${post.id}/edit">Edit</a></td>
+    <td><a class="post_destroy" href="/posts/${post.id}">Destroy</a></td>
+  </tr>`
 }

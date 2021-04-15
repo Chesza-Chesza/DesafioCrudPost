@@ -6,4 +6,21 @@ class PostsController < ApplicationController
       format.json {render json: @posts.to_json}
     end
   end
+
+  def show
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.json {render json: @post.to_json}
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    byebug
+    #@post.destroy
+    respond_to do |format|
+      format.json {render json: @post.to_json}
+    end
+  end
+
 end
