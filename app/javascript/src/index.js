@@ -1,5 +1,8 @@
 export default function index() {
-    fetch('http://localhost:3000/posts/index.json')
+    fetch('/posts', {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+        })
         .then(response => response.json())
         .then(data => console.log(data))
 }
