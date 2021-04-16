@@ -1,6 +1,5 @@
 export default function destroy(e) {
     const url = e.target.href
-    console.log(url)
     fetch(url, {
             method: 'DELETE',
             headers: {
@@ -8,6 +7,8 @@ export default function destroy(e) {
                 "X-CSRF-Token": document.querySelector("[name='csrf-token']").content
             }
         }).then(data => data.json())
-        .then(post => console.log(post))
-        //.then(post => document.querySelector('#post-content').innerHTML = post)
+        .then(post => {
+            const elem = document.querySelector(`#post-${post.id}`)
+            elem.parentNode.removeChild(elem)
+        })
 }

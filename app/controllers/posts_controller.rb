@@ -16,7 +16,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    byebug
     #@post.destroy
     respond_to do |format|
       format.json {render json: @post.to_json}
