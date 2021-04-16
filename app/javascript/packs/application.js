@@ -15,6 +15,8 @@ ActiveStorage.start()
 import index from '../src/index'
 import show from '../src/show'
 import destroy from '../src/destroy'
+import _new from '../src/new'
+import create from '../src/create'
 
 index()
 
@@ -27,4 +29,18 @@ document.addEventListener('click', function(e) {
         e.preventDefault()
         destroy(e)
     }
+    if (e.target.matches('.post_new')) {
+        e.preventDefault()
+        _new()
+    }
+})
+
+document.addEventListener('submit', function(e) {
+    e.preventDefault()
+        // if (e.target.matches('.post_new')) {
+        //     e.preventDefault()
+        //     _new()
+        // }
+    console.log(e)
+    console.log(e.target)
 })
