@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(title: params[:post][:title], content: params[:post][:content])
+    @post = Post.new(post_params)
 
     respond_to do |format|
       if @post.save
@@ -30,6 +30,12 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.json {render json: @post.to_json}
     end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content, :id )
   end
 
 end
