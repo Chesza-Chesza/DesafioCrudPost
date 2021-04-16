@@ -37,10 +37,8 @@ document.addEventListener('click', function(e) {
 
 document.addEventListener('submit', function(e) {
     e.preventDefault()
-        // if (e.target.matches('.post_new')) {
-        //     e.preventDefault()
-        //     _new()
-        // }
-    console.log(e)
-    console.log(e.target)
+    if (e.target.matches('#post_create')) {
+        e.preventDefault()
+        create(e)
+    }
 })

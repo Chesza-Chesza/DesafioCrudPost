@@ -1,3 +1,7 @@
 export default function create(e) {
-    console.log(e)
+    const post = createObj(e.target)
+}
+
+function createObj(target) {
+    console.log(target)
 }
