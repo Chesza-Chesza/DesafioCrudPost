@@ -1,3 +1,4 @@
+import { createHTML } from './index'
 export default function create(e) {
     const post = createObj(e.target)
     fetch(e.target.action, {
@@ -9,7 +10,13 @@ export default function create(e) {
             },
             body: JSON.stringify(post)
         }).then(data => data.json())
-        .then(post => console.log(post))
+        .then(post => {
+            const table = document.querySelector('#posts tbody')
+            table.insertAdjacentHTML('beforeend', createHTML(post))
+
+            e.target.post_title.value = ''
+            e.target.post_content.value = ''
+        })
 }
 
 function createObj(target) {
